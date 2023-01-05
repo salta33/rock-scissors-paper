@@ -1,12 +1,18 @@
 
     function getComputerChoice(){
+             //outputs randomly either 0, 1, or 2;
      return Math.floor(Math.random()*3); 
-     //outputs randomly either 0, 1, or 2;
+             //number 0 represents rock;
+            //number 1 represents scissors;
+            //number 2 represents paper;
     };
 
     function getPlayerChoice(){
+            //gets user to input rock, scissors or paper and returns a number representing each word as 0,1, or 2
     let checkCorrectInput=0;
     let playerInput="";
+
+            //prompts user to enter value again if user enters a value that is not rock, scissors, or paper
     do {
         playerInput = prompt("Please input - Rock, Scissors, or Paper").toLowerCase();
 
@@ -15,6 +21,7 @@
         }
     } while (checkCorrectInput !==1);
 
+            //Evaluates each input and returns a number, accordingly
     if (playerInput === "rock"){
         return 0;
     } else if (playerInput === "scissors"){
@@ -25,6 +32,7 @@
     }
     
     function playRound(playerSelection, computerSelection){
+        //compares playerSelection and computerSelection and assigns a string value to roundWinner; returns roundWinner
         let roundWinner="";
    
         if (playerSelection == 0 && computerSelection == 1){
