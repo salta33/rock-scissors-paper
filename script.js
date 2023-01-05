@@ -5,17 +5,25 @@
     };
 
     function getPlayerChoice(){
-    let playerInput=prompt("Please input rock, scissors, or paper");
-    if (playerInput.toLowerCase() === "rock"){
+    let checkCorrectInput=0;
+    let playerInput="";
+    do {
+        playerInput = prompt("Please input - Rock, Scissors, or Paper").toLowerCase();
+
+        if(playerInput === "rock" || playerInput === "scissors" || playerInput === "paper"){
+            checkCorrectInput =1;
+        }
+    } while (checkCorrectInput !==1);
+
+    if (playerInput === "rock"){
         return 0;
-    } else if (playerInput.toLowerCase() === "scissors"){
+    } else if (playerInput === "scissors"){
         return 1;
-    } else if (playerInput.toLowerCase() === "paper"){
+    } else if (playerInput === "paper"){
         return 2;
-    } return "Please input correctly either Rock, Scissors, or Paper";
+    } 
     }
-
-
+    
     function playRound(playerSelection, computerSelection){
         let roundWinner="";
    
@@ -57,28 +65,22 @@
        
         }
 
-        let computerSelection=getComputerChoice();
-        let playerSelection=getPlayerChoice();
-
-
        function game(){
         let playerTurn="";
         let computerTurn="";
         let playerPoints=0;
         let computerPoints=0;
         let roundResult="";
-       for (let i=0; i<2; i++){
+       for (let i=0; i<5; i++){
         computerTurn=getComputerChoice();
         playerTurn=getPlayerChoice();
-        
         roundResult = playRound(playerTurn,computerTurn);
         if (roundResult.includes("You Win")){
             playerPoints++;
         }else if (roundResult.includes("You Lose")){
             computerPoints++;
         }
-        console.log(roundResult + "The score is:" +playerPoints +"to"+computerPoints);
-
+        console.log(roundResult + " The score is:" +playerPoints +" to "+computerPoints);
        }
     }
 
